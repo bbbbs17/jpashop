@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="jpabook.jpashop.service.OrderServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2024-04-09T04:38:36" hostname="gongbyeongseon-ui-MacBookAir.local" time="0.482">
+  <properties/>
+  <testcase name="상품주문_재고수량초과" classname="jpabook.jpashop.service.OrderServiceTest" time="0.463"/>
+  <testcase name="상품주문" classname="jpabook.jpashop.service.OrderServiceTest" time="0.01"/>
+  <testcase name="주문취소" classname="jpabook.jpashop.service.OrderServiceTest" time="0.006"/>
+  <system-out><![CDATA[13:38:33.717 [Test worker] INFO org.springframework.boot.devtools.restart.RestartApplicationListener -- Restart disabled due to context in which it is running
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.3)
+
+2024-04-09T13:38:33.878+09:00  INFO 48071 --- [    Test worker] j.jpashop.service.OrderServiceTest       : Starting OrderServiceTest using Java 21.0.2 with PID 48071 (started by bs in /Users/bs/Desktop/study/jpashop)
+2024-04-09T13:38:33.878+09:00  INFO 48071 --- [    Test worker] j.jpashop.service.OrderServiceTest       : No active profile set, falling back to 1 default profile: "default"
+2024-04-09T13:38:34.238+09:00  INFO 48071 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-09T13:38:34.251+09:00  INFO 48071 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 0 JPA repository interfaces.
+2024-04-09T13:38:34.574+09:00  INFO 48071 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-09T13:38:34.606+09:00  INFO 48071 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-09T13:38:34.624+09:00  INFO 48071 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-09T13:38:34.751+09:00  INFO 48071 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-04-09T13:38:34.768+09:00  INFO 48071 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-09T13:38:34.890+09:00  INFO 48071 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:test user=SA
+2024-04-09T13:38:34.891+09:00  INFO 48071 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-09T13:38:35.091+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515091 | took 4ms | statement | connection 1| url jdbc:h2:mem:test
+select * from INFORMATION_SCHEMA.SEQUENCES
+select * from INFORMATION_SCHEMA.SEQUENCES;
+2024-04-09T13:38:35.638+09:00  INFO 48071 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-09T13:38:35.647+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515647 | took 0ms | statement | connection 2| url jdbc:h2:mem:test
+
+    drop table if exists category cascade 
+
+    drop table if exists category cascade ;
+2024-04-09T13:38:35.648+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515648 | took 0ms | statement | connection 2| url jdbc:h2:mem:test
+
+    drop table if exists category_item cascade 
+
+    drop table if exists category_item cascade ;
+2024-04-09T13:38:35.648+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515648 | took 0ms | statement | connection 2| url jdbc:h2:mem:test
+
+    drop table if exists delivery cascade 
+
+    drop table if exists delivery cascade ;
+2024-04-09T13:38:35.649+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515649 | took 0ms | statement | connection 2| url jdbc:h2:mem:test
+
+    drop table if exists item cascade 
+
+    drop table if exists item cascade ;
+2024-04-09T13:38:35.649+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515649 | took 0ms | statement | connection 2| url jdbc:h2:mem:test
+
+    drop table if exists member cascade 
+
+    drop table if exists member cascade ;
+2024-04-09T13:38:35.649+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515649 | took 0ms | statement | connection 2| url jdbc:h2:mem:test
+
+    drop table if exists order_item cascade 
+
+    drop table if exists order_item cascade ;
+2024-04-09T13:38:35.649+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515649 | took 0ms | statement | connection 2| url jdbc:h2:mem:test
+
+    drop table if exists orders cascade 
+
+    drop table if exists orders cascade ;
+2024-04-09T13:38:35.650+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515650 | took 0ms | statement | connection 2| url jdbc:h2:mem:test
+
+    drop sequence if exists category_seq
+
+    drop sequence if exists category_seq;
+2024-04-09T13:38:35.650+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515650 | took 0ms | statement | connection 2| url jdbc:h2:mem:test
+
+    drop sequence if exists delivery_seq
+
+    drop sequence if exists delivery_seq;
+2024-04-09T13:38:35.651+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515651 | took 0ms | statement | connection 2| url jdbc:h2:mem:test
+
+    drop sequence if exists item_seq
+
+    drop sequence if exists item_seq;
+2024-04-09T13:38:35.651+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515651 | took 0ms | statement | connection 2| url jdbc:h2:mem:test
+
+    drop sequence if exists member_seq
+
+    drop sequence if exists member_seq;
+2024-04-09T13:38:35.651+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515651 | took 0ms | statement | connection 2| url jdbc:h2:mem:test
+
+    drop sequence if exists order_item_seq
+
+    drop sequence if exists order_item_seq;
+2024-04-09T13:38:35.651+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515651 | took 0ms | statement | connection 2| url jdbc:h2:mem:test
+
+    drop sequence if exists orders_seq
+
+    drop sequence if exists orders_seq;
+2024-04-09T13:38:35.655+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515655 | took 1ms | statement | connection 3| url jdbc:h2:mem:test
+
+    create sequence category_seq start with 1 increment by 50
+
+    create sequence category_seq start with 1 increment by 50;
+2024-04-09T13:38:35.656+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515656 | took 0ms | statement | connection 3| url jdbc:h2:mem:test
+
+    create sequence delivery_seq start with 1 increment by 50
+
+    create sequence delivery_seq start with 1 increment by 50;
+2024-04-09T13:38:35.656+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515656 | took 0ms | statement | connection 3| url jdbc:h2:mem:test
+
+    create sequence item_seq start with 1 increment by 50
+
+    create sequence item_seq start with 1 increment by 50;
+2024-04-09T13:38:35.657+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515657 | took 0ms | statement | connection 3| url jdbc:h2:mem:test
+
+    create sequence member_seq start with 1 increment by 50
+
+    create sequence member_seq start with 1 increment by 50;
+2024-04-09T13:38:35.657+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515657 | took 0ms | statement | connection 3| url jdbc:h2:mem:test
+
+    create sequence order_item_seq start with 1 increment by 50
+
+    create sequence order_item_seq start with 1 increment by 50;
+2024-04-09T13:38:35.657+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515657 | took 0ms | statement | connection 3| url jdbc:h2:mem:test
+
+    create sequence orders_seq start with 1 increment by 50
+
+    create sequence orders_seq start with 1 increment by 50;
+2024-04-09T13:38:35.663+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515663 | took 3ms | statement | connection 3| url jdbc:h2:mem:test
+
+    create table category (
+        category_id bigint not null,
+        parent_id bigint,
+        name varchar(255),
+        primary key (category_id)
+    )
+
+    create table category (
+        category_id bigint not null,
+        parent_id bigint,
+        name varchar(255),
+        primary key (category_id)
+    );
+2024-04-09T13:38:35.664+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515664 | took 0ms | statement | connection 3| url jdbc:h2:mem:test
+
+    create table category_item (
+        category_id bigint not null,
+        item_id bigint not null
+    )
+
+    create table category_item (
+        category_id bigint not null,
+        item_id bigint not null
+    );
+2024-04-09T13:38:35.666+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515666 | took 1ms | statement | connection 3| url jdbc:h2:mem:test
+
+    create table delivery (
+        delivery_id bigint not null,
+        city varchar(255),
+        status varchar(255) check (status in ('READY','COMP')),
+        street varchar(255),
+        zipcode varchar(255),
+        primary key (delivery_id)
+    )
+
+    create table delivery (
+        delivery_id bigint not null,
+        city varchar(255),
+        status varchar(255) check (status in ('READY','COMP')),
+        street varchar(255),
+        zipcode varchar(255),
+        primary key (delivery_id)
+    );
+2024-04-09T13:38:35.668+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515668 | took 1ms | statement | connection 3| url jdbc:h2:mem:test
+
+    create table item (
+        price integer not null,
+        stock_quantity integer not null,
+        item_id bigint not null,
+        dtype varchar(31) not null,
+        actor varchar(255),
+        artist varchar(255),
+        author varchar(255),
+        director varchar(255),
+        etc varchar(255),
+        isbn varchar(255),
+        name varchar(255),
+        primary key (item_id)
+    )
+
+    create table item (
+        price integer not null,
+        stock_quantity integer not null,
+        item_id bigint not null,
+        dtype varchar(31) not null,
+        actor varchar(255),
+        artist varchar(255),
+        author varchar(255),
+        director varchar(255),
+        etc varchar(255),
+        isbn varchar(255),
+        name varchar(255),
+        primary key (item_id)
+    );
+2024-04-09T13:38:35.670+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515670 | took 1ms | statement | connection 3| url jdbc:h2:mem:test
+
+    create table member (
+        member_id bigint not null,
+        city varchar(255),
+        name varchar(255),
+        street varchar(255),
+        zipcode varchar(255),
+        primary key (member_id)
+    )
+
+    create table member (
+        member_id bigint not null,
+        city varchar(255),
+        name varchar(255),
+        street varchar(255),
+        zipcode varchar(255),
+        primary key (member_id)
+    );
+2024-04-09T13:38:35.671+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515671 | took 0ms | statement | connection 3| url jdbc:h2:mem:test
+
+    create table order_item (
+        count integer not null,
+        order_price integer not null,
+        item_id bigint,
+        order_id bigint,
+        order_item_id bigint not null,
+        primary key (order_item_id)
+    )
+
+    create table order_item (
+        count integer not null,
+        order_price integer not null,
+        item_id bigint,
+        order_id bigint,
+        order_item_id bigint not null,
+        primary key (order_item_id)
+    );
+2024-04-09T13:38:35.674+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515674 | took 1ms | statement | connection 3| url jdbc:h2:mem:test
+
+    create table orders (
+        delivery_id bigint unique,
+        memeber_id bigint,
+        order_date timestamp(6),
+        order_id bigint not null,
+        status varchar(255) check (status in ('ORDER','CANCEL')),
+        primary key (order_id)
+    )
+
+    create table orders (
+        delivery_id bigint unique,
+        memeber_id bigint,
+        order_date timestamp(6),
+        order_id bigint not null,
+        status varchar(255) check (status in ('ORDER','CANCEL')),
+        primary key (order_id)
+    );
+2024-04-09T13:38:35.679+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515679 | took 3ms | statement | connection 3| url jdbc:h2:mem:test
+
+    alter table if exists category 
+       add constraint FK2y94svpmqttx80mshyny85wqr 
+       foreign key (parent_id) 
+       references category
+
+    alter table if exists category 
+       add constraint FK2y94svpmqttx80mshyny85wqr 
+       foreign key (parent_id) 
+       references category;
+2024-04-09T13:38:35.680+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515680 | took 1ms | statement | connection 3| url jdbc:h2:mem:test
+
+    alter table if exists category_item 
+       add constraint FKu8b4lwqutcdq3363gf6mlujq 
+       foreign key (item_id) 
+       references item
+
+    alter table if exists category_item 
+       add constraint FKu8b4lwqutcdq3363gf6mlujq 
+       foreign key (item_id) 
+       references item;
+2024-04-09T13:38:35.681+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515681 | took 0ms | statement | connection 3| url jdbc:h2:mem:test
+
+    alter table if exists category_item 
+       add constraint FKcq2n0opf5shyh84ex1fhukcbh 
+       foreign key (category_id) 
+       references category
+
+    alter table if exists category_item 
+       add constraint FKcq2n0opf5shyh84ex1fhukcbh 
+       foreign key (category_id) 
+       references category;
+2024-04-09T13:38:35.682+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515682 | took 0ms | statement | connection 3| url jdbc:h2:mem:test
+
+    alter table if exists order_item 
+       add constraint FKija6hjjiit8dprnmvtvgdp6ru 
+       foreign key (item_id) 
+       references item
+
+    alter table if exists order_item 
+       add constraint FKija6hjjiit8dprnmvtvgdp6ru 
+       foreign key (item_id) 
+       references item;
+2024-04-09T13:38:35.684+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515684 | took 0ms | statement | connection 3| url jdbc:h2:mem:test
+
+    alter table if exists order_item 
+       add constraint FKt4dc2r9nbvbujrljv3e23iibt 
+       foreign key (order_id) 
+       references orders
+
+    alter table if exists order_item 
+       add constraint FKt4dc2r9nbvbujrljv3e23iibt 
+       foreign key (order_id) 
+       references orders;
+2024-04-09T13:38:35.685+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515685 | took 0ms | statement | connection 3| url jdbc:h2:mem:test
+
+    alter table if exists orders 
+       add constraint FKtkrur7wg4d8ax0pwgo0vmy20c 
+       foreign key (delivery_id) 
+       references delivery
+
+    alter table if exists orders 
+       add constraint FKtkrur7wg4d8ax0pwgo0vmy20c 
+       foreign key (delivery_id) 
+       references delivery;
+2024-04-09T13:38:35.686+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637515686 | took 0ms | statement | connection 3| url jdbc:h2:mem:test
+
+    alter table if exists orders 
+       add constraint FK19th1ad8bunchorxf4qpfi7km 
+       foreign key (memeber_id) 
+       references member
+
+    alter table if exists orders 
+       add constraint FK19th1ad8bunchorxf4qpfi7km 
+       foreign key (memeber_id) 
+       references member;
+2024-04-09T13:38:35.687+09:00  INFO 48071 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-09T13:38:35.836+09:00  WARN 48071 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-09T13:38:35.851+09:00  INFO 48071 --- [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2024-04-09T13:38:36.068+09:00  INFO 48071 --- [    Test worker] j.jpashop.service.OrderServiceTest       : Started OrderServiceTest in 2.358 seconds (process running for 3.061)
+2024-04-09T13:38:36.506+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637516506 | took 1ms | statement | connection 4| url jdbc:h2:mem:test
+select next value for member_seq
+select next value for member_seq;
+2024-04-09T13:38:36.527+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637516527 | took 0ms | statement | connection 4| url jdbc:h2:mem:test
+select next value for item_seq
+select next value for item_seq;
+2024-04-09T13:38:36.540+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637516540 | took 0ms | rollback | connection 4| url jdbc:h2:mem:test
+
+;
+2024-04-09T13:38:36.546+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637516546 | took 0ms | statement | connection 5| url jdbc:h2:mem:test
+select next value for member_seq
+select next value for member_seq;
+2024-04-09T13:38:36.548+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637516548 | took 0ms | statement | connection 5| url jdbc:h2:mem:test
+select next value for item_seq
+select next value for item_seq;
+2024-04-09T13:38:36.549+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637516549 | took 0ms | statement | connection 5| url jdbc:h2:mem:test
+select next value for orders_seq
+select next value for orders_seq;
+2024-04-09T13:38:36.550+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637516550 | took 0ms | statement | connection 5| url jdbc:h2:mem:test
+select next value for delivery_seq
+select next value for delivery_seq;
+2024-04-09T13:38:36.552+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637516552 | took 0ms | statement | connection 5| url jdbc:h2:mem:test
+select next value for order_item_seq
+select next value for order_item_seq;
+2024-04-09T13:38:36.554+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637516554 | took 0ms | rollback | connection 5| url jdbc:h2:mem:test
+
+;
+2024-04-09T13:38:36.557+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637516557 | took 0ms | statement | connection 6| url jdbc:h2:mem:test
+select next value for orders_seq
+select next value for orders_seq;
+2024-04-09T13:38:36.558+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637516558 | took 0ms | statement | connection 6| url jdbc:h2:mem:test
+select next value for delivery_seq
+select next value for delivery_seq;
+2024-04-09T13:38:36.559+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637516559 | took 0ms | statement | connection 6| url jdbc:h2:mem:test
+select next value for order_item_seq
+select next value for order_item_seq;
+2024-04-09T13:38:36.561+09:00  INFO 48071 --- [    Test worker] p6spy                                    : #1712637516561 | took 0ms | rollback | connection 6| url jdbc:h2:mem:test
+
+;
+]]></system-out>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/Users/bs/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.12/be4984cb6fd1ef1d11f218a648889dfda44b8a15/byte-buddy-agent-1.14.12.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
